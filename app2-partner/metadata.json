@@ -1,0 +1,21 @@
+{
+  "title": "Auth0 Spring Security MVC Single Sign On (SSO) Sample",
+  "description": "Demonstrates using Auth0 with Spring Boot and Spring Security to create a traditional server-side MVC web app that is configured for Single Sign On with other Auth0 authenticated application users.",
+  "seed": "true",
+  "languages":[
+    "java"
+  ],
+  "frameworks":[
+    "spring",
+    "spring boot",
+    "spring security"
+  ],
+  "tags": [
+    "java",
+    "spring",
+    "spring-boot",
+    "single sign-on",
+    "sso",
+    "auth0"
+  ]
+}
