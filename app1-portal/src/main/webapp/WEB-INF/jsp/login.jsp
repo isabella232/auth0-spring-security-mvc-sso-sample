@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://cdn.auth0.com/js/lock-9.min.js"></script>
-    <script src="http://cdn.auth0.com/w2/auth0-6.8.js"></script>
+    <script src="http://cdn.auth0.com/js/lock/10.4.0/lock.min.js"></script>
+    <script src="//cdn.auth0.com/w2/auth0-7.2.1.js"></script>
     <script src="/js/jquery.growl.js" type="text/javascript"></script>
 </head>
 <body>
@@ -68,25 +68,26 @@
                             } else {
                                 $.growl({title: "Welcome!", message: "Please log in"});
                             }
-                            var lock = new Auth0Lock('${clientId}', '${domain}');
-                            lock.showSignin({
-                                dict: {
-                                    signin: {
-                                        title: "Portal Login"
+
+                            var lock = new Auth0Lock('${clientId}', '${domain}', {
+                                languageDictionary: {
+                                    title: "Portal Login"
+                                },
+                                auth: {
+                                    redirectUrl: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${loginCallback}',
+                                    responseType: 'code',
+                                    sso: true,
+                                    params: {
+                                        state: '${state}',
+                                        // Learn about scopes: https://auth0.com/docs/scopes
+                                        scope: 'openid user_id name nickname email picture'
                                     }
-                                },
-                                authParams: {
-                                    state: '${state}',
-                                    // change scopes to whatever you like
-                                    // claims are added to JWT id_token - openid profile gives everything
-                                    scope: 'openid roles user_id name nickname email picture'
-                                },
-                                sso: true,
-                                connections: ['${connection}'],
-                                responseType: 'code',
-                                popup: false,
-                                callbackURL: '${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${loginCallback}'
+                                }
                             });
+                            // delay to allow welcome message..
+                            setTimeout(function () {
+                                lock.show({allowedConnections: ['${connection}']});
+                            }, 1500);
                         </c:otherwise>
                     </c:choose>
                 }
