@@ -113,7 +113,7 @@ If you wanted to limit which specific applications this rule applies to then you
 
 Enter your:
 
-`client_id`, `client_secret`, and `domain` information into `src/main/resources/auth0.properties`
+`client_id`, `issuer`, `client_secret`, and `domain` information into `src/main/resources/auth0.properties`
 
 Also enter your:
 

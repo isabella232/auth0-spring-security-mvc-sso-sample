@@ -67,7 +67,7 @@ Ensure you set up the Auth0 Rule for Authorization as described in the README wh
 
 Enter your:
 
-`client_id`, `client_secret`, and `domain` information into `src/main/resources/auth0.properties`
+`client_id`, `issuer`, `client_secret`, and `domain` information into `src/main/resources/auth0.properties`
 
 Also enter your:
 
