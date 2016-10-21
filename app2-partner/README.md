@@ -75,11 +75,6 @@ Also enter your:
 
 For all other settings defined in `auth0.properties` please refer to the [library readme](https://github.com/auth0/auth0-spring-security-mvc#auth0configuration)
 
-Special Note: There are two properties in `auth0.properties` that you do not need to touch. Leave values as `false`
-
-`auth0.servletFilterEnabled: false` - this ensures we don't autowire the ServletFilter defined in an Auth0 dependency
-library.
-
 `auth0.defaultAuth0WebSecurityEnabled: false` - this ensures we do not autowire the default configuration file
 provided with the `auth0-spring-security-mvc` library itself. That is a default configuration suitable only for
 simpler applications seeking to have an out of the box secured endpoint URL - similar to `auth-servlet` library.
